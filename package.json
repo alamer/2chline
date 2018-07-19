@@ -23,6 +23,10 @@
     "/portal/*": {
         "target": "https://2chline.peshkom.org",
         "changeOrigin": true
-    }
+    },
+    "/send": {
+      "target": "https://2chline.peshkom.org",
+      "changeOrigin": true
+  }    
 }
 }

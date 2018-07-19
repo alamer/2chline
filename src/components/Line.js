@@ -4,8 +4,19 @@ import { connect } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Row from "./Row";
 import {addImage} from '../actions/index'
-import {loadImagePortion} from '../api/APIUtils';
+import {loadImagePortionAPI} from '../api/APIUtils';
+import { withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
+
+const styles = theme => ({
+row: {
+    float       : 'none', 
+    marginLeft  : 'auto',
+    marginRight : 'auto'
+},
+});
 class Line extends Component {    
     constructor() {
         super();
@@ -14,32 +25,38 @@ class Line extends Component {
     }
     fetchMoreData = () => {
         console.log('fetch');
-        loadImagePortion().then(res => {
+        loadImagePortionAPI().then(res => {
             this.props.fetchMoreData(res.data);    
         }).catch(err => console.error(err));
         
         
     };
 
+  
+
+
+    componentDidMount() {
+        this.fetchMoreData();
+    }
+
    
     render() {
+        const { classes } = this.props;
       return (
-      <div>
+      <div className={classes.row}>
         <InfiniteScroll
           dataLength={this.props.images.length}
           next={this.fetchMoreData}
           hasMore={true}
           loader={<h4>Loading...</h4>}
         >
-        <ul className="list-group list-group-flush">
-        {this.props.images.map((el,index) => (
-            <li className="list-group-item" key={index}>
-                
-                <Row data={el} />
-
-            </li>
+        <List>
+        {this.props.images.map(el => (
+                <ListItem>
+                    <Row data={el} />
+                </ListItem>                        
         ))}
-        </ul>
+        </List>
     </InfiniteScroll>
     
     </div>
@@ -61,4 +78,4 @@ class Line extends Component {
     }
 };
 
-  export default connect(mapStateToProps,mapDispatchToProps)(Line)
+  export default connect(mapStateToProps,mapDispatchToProps)(withStyles(styles)(Line))
