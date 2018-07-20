@@ -18,18 +18,23 @@ row: {
 },
 });
 class Line extends Component {    
+    state = {
+        hasMore: true
+      };
     constructor() {
         super();
 
         this.fetchMoreData=this.fetchMoreData.bind(this);
     }
     fetchMoreData = () => {
+        if (this.props.images.length >= 1000) {
+            this.setState({ hasMore: false });
+            return;
+          }
         console.log('fetch');
         loadImagePortionAPI().then(res => {
             this.props.fetchMoreData(res.data);    
         }).catch(err => console.error(err));
-        
-        
     };
 
   
@@ -47,12 +52,14 @@ class Line extends Component {
         <InfiniteScroll
           dataLength={this.props.images.length}
           next={this.fetchMoreData}
-          hasMore={true}
+          hasMore={this.state.hasMore}
           loader={<h4>Loading...</h4>}
+          endMessage={<h1>Please reload page</h1>}
+          scrollThreshold='0.9'
         >
         <List>
         {this.props.images.map(el => (
-                <ListItem>
+                <ListItem key={el.md5}>
                     <Row data={el} />
                 </ListItem>                        
         ))}
