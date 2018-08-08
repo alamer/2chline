@@ -3,11 +3,19 @@ import Line from './components/Line';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Switch from '@material-ui/core/Switch';
 
 
 
 
 class App extends Component {
+  state = {
+    swipable: false
+  };
+
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
   render() {
     return (
       <div>
@@ -16,9 +24,15 @@ class App extends Component {
         <Typography variant="title" color="inherit">
           2CHline
         </Typography>
+        Swipe
+        <Switch
+          checked={this.state.swipable}
+          onChange={this.handleChange('swipable')}
+          value="swipable"
+        />
       </Toolbar>
     </AppBar>
-        <Line />
+        <Line swipable={this.state.swipable} />
         </div>
     );
   }

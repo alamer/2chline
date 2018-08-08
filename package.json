@@ -11,6 +11,7 @@
     "react-infinite-scroller": "^1.2.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
+    "react-swipeable": "^4.3.0",
     "redux": "^4.0.0"
   },
   "scripts": {
@@ -21,12 +22,12 @@
   },
   "proxy": {
     "/portal/*": {
-        "target": "https://2chline.peshkom.org",
-        "changeOrigin": true
+      "target": "https://2chline.peshkom.org",
+      "changeOrigin": true
     },
     "/send": {
       "target": "https://2chline.peshkom.org",
       "changeOrigin": true
-  }    
-}
+    }
+  }
 }

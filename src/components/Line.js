@@ -8,6 +8,7 @@ import {loadImagePortionAPI} from '../api/APIUtils';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import SwipeableComponent from './SwipeableComponent'
 
 
 const styles = theme => ({
@@ -19,7 +20,7 @@ row: {
 });
 class Line extends Component {    
     state = {
-        hasMore: true
+        hasMore: true,
       };
     constructor() {
         super();
@@ -47,6 +48,14 @@ class Line extends Component {
    
     render() {
         const { classes } = this.props;
+        if (this.props.swipable) {
+            return (
+                <div className={classes.row}>  
+                    <SwipeableComponent />
+                 </div>
+    
+            )
+        } else {
       return (
       <div className={classes.row}>
         <InfiniteScroll
@@ -67,7 +76,9 @@ class Line extends Component {
     </InfiniteScroll>
     
     </div>
+    
       )
+    }
     }
   }
 

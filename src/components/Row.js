@@ -62,7 +62,7 @@ class Row extends Component {
       return (
         <div>
 
-      <a href={imgUrl} target="_blank" rel="noopener noreferrer"> <img className={classes.image} src={imgUrl}></img></a>
+      <a href={imgUrl}  target="_blank" rel="noopener noreferrer"> <img alt="" className={classes.image} src={imgUrl}></img></a>
           <div>
             <Button 
                 onClick={this.handleSend}  
