@@ -22,11 +22,7 @@
   },
   "proxy": {
     "/portal/*": {
-      "target": "https://2chline.peshkom.org",
-      "changeOrigin": true
-    },
-    "/send": {
-      "target": "https://2chline.peshkom.org",
+      "target": "https://testjfb.peshkom.org",
       "changeOrigin": true
     }
   }

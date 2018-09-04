@@ -22,7 +22,7 @@ class App extends Component {
       <AppBar position="static" color="default">
       <Toolbar>
         <Typography variant="title" color="inherit">
-          2CHline
+          Chanline
         </Typography>
         Swipe
         <Switch

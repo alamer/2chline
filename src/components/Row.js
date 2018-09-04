@@ -30,8 +30,11 @@ class Row extends Component {
       };
     constructor() {
         super();
-        this.handleSend = this.handleSend.bind(this);
-        this.handleKill = this.handleKill.bind(this);
+        this.handleLine = this.handleLine.bind(this);
+        this.handleBoobs = this.handleBoobs.bind(this);
+        this.handleButs = this.handleButs.bind(this);
+        this.handleLegz = this.handleLegz.bind(this);
+        this.handleNiceBoobs = this.handleNiceBoobs.bind(this);
         this.handleKillThread = this.handleKillThread.bind(this);
       }
 
@@ -39,18 +42,45 @@ class Row extends Component {
         this.setState({ snackOpen: false});
       };
 
-    handleSend =() => {
+    handleLine =() => {
         console.log("Send: "+this.props.data.image_url);
         this.props.clickKill(this.props.data.image_url);
-        sendImageAPI(this.props.data.image_url).then(res => {
+        sendImageAPI("line",this.props.data.image_url).then(res => {
             console.log('Success send');
             this.setState({ snackOpen: true});
-            
         }).catch(err => console.error(err));
     }
-    handleKill =() => {
-        console.log("Kill: "+this.props.data.image_url);
+    handleBoobs =() => {
+        console.log("Send: "+this.props.data.image_url);
         this.props.clickKill(this.props.data.image_url);
+        sendImageAPI("boobs",this.props.data.image_url).then(res => {
+            console.log('Success send');
+            this.setState({ snackOpen: true});
+        }).catch(err => console.error(err));
+    }
+    handleButs =() => {
+        console.log("Send: "+this.props.data.image_url);
+        this.props.clickKill(this.props.data.image_url);
+        sendImageAPI("buts",this.props.data.image_url).then(res => {
+            console.log('Success send');
+            this.setState({ snackOpen: true});
+        }).catch(err => console.error(err));
+    }
+    handleLegz =() => {
+        console.log("Send: "+this.props.data.image_url);
+        this.props.clickKill(this.props.data.image_url);
+        sendImageAPI("legz",this.props.data.image_url).then(res => {
+            console.log('Success send');
+            this.setState({ snackOpen: true});
+        }).catch(err => console.error(err));
+    }
+    handleNiceBoobs =() => {
+        console.log("Send: "+this.props.data.image_url);
+        this.props.clickKill(this.props.data.image_url);
+        sendImageAPI("nboobs",this.props.data.image_url).then(res => {
+            console.log('Success send');
+            this.setState({ snackOpen: true});
+        }).catch(err => console.error(err));
     }
     handleKillThread =() => {
         console.log("Kill Thread: "+this.props.data.thread);
@@ -64,21 +94,38 @@ class Row extends Component {
 
       <a href={imgUrl}  target="_blank" rel="noopener noreferrer"> <img alt="" className={classes.image} src={imgUrl}></img></a>
           <div>
-            <Button 
-                onClick={this.handleSend}  
+            <Button
+                onClick={this.handleLine}
                 variant="contained"
                 className={classes.button}
-                >
-                Send</Button>
-            <Button 
-                onClick={this.handleKill} 
-                color="primary"  
+                >Line</Button>
+            <Button
+                onClick={this.handleBoobs}
+                color="primary"
                 variant="contained"
                 className={classes.button}
-            >Kill</Button>
-            <Button 
-                onClick={this.handleKillThread} 
-                color="secondary" 
+            >Boobs</Button>
+            <Button
+                onClick={this.handleButs}
+                color="primary"
+                variant="contained"
+                className={classes.button}
+            >Buts</Button>
+            <Button
+                onClick={this.handleLegz}
+                color="primary"
+                variant="contained"
+                className={classes.button}
+            >Legz</Button>
+            <Button
+                onClick={this.handleNiceBoobs}
+                color="primary"
+                variant="contained"
+                className={classes.button}
+            >Nice boobs</Button>
+            <Button
+                onClick={this.handleKillThread}
+                color="secondary"
                 variant="contained"
                 className={classes.button}
             >Kill thread</Button>
