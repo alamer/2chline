@@ -35,6 +35,7 @@ class Row extends Component {
         this.handleButs = this.handleButs.bind(this);
         this.handleLegz = this.handleLegz.bind(this);
         this.handleNiceBoobs = this.handleNiceBoobs.bind(this);
+        this.handlePussy = this.handlePussy.bind(this);
         this.handleKillThread = this.handleKillThread.bind(this);
       }
 
@@ -82,6 +83,14 @@ class Row extends Component {
             this.setState({ snackOpen: true});
         }).catch(err => console.error(err));
     }
+    handlePussy =() => {
+        console.log("Send: "+this.props.data.image_url);
+        this.props.clickKill(this.props.data.image_url);
+        sendImageAPI("pussy",this.props.data.image_url).then(res => {
+            console.log('Success send');
+            this.setState({ snackOpen: true});
+        }).catch(err => console.error(err));
+    }
     handleKillThread =() => {
         console.log("Kill Thread: "+this.props.data.thread);
         this.props.clickKillThread(this.props.data.thread);
@@ -123,6 +132,12 @@ class Row extends Component {
                 variant="contained"
                 className={classes.button}
             >Nice boobs</Button>
+            <Button
+                onClick={this.handlePussy}
+                color="primary"
+                variant="contained"
+                className={classes.button}
+            >Pussy</Button>
             <Button
                 onClick={this.handleKillThread}
                 color="secondary"
